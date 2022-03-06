@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Google Maps - gmplot</title>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
+<script type="text/javascript">
+    function initialize() {
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            zoom: 20,
+            center: new google.maps.LatLng(23.826062, 90.348974)
+        });
+
+        new google.maps.visualization.HeatmapLayer({
+            threshold: 10,
+            radius: 10,
+            maxIntensity: 1,
+            opacity: 0.600000,
+            dissipating: true,
+            map: map,
+            data: [
+                new google.maps.LatLng(23.826062, 90.348974),
+                new google.maps.LatLng(23.826066, 90.348995),
+                new google.maps.LatLng(23.826070, 90.348998),
+                new google.maps.LatLng(23.826074, 90.349005),
+                new google.maps.LatLng(23.826077, 90.349004),
+                new google.maps.LatLng(23.826083, 90.349026),
+                new google.maps.LatLng(23.826086, 90.349032),
+                new google.maps.LatLng(23.826072, 90.349006),
+                new google.maps.LatLng(23.826065, 90.348991),
+                new google.maps.LatLng(23.826067, 90.348990),
+                new google.maps.LatLng(23.826072, 90.349008),
+            ]
+        });
+
+    }
+</script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+    <div id="map_canvas" style="width: 100%; height: 100%;" />
+</body>
+</html>
