@@ -40,7 +40,6 @@ class Application(tk.Frame):
 				#if 
 				print("Device Not Found")
 		return IP
-		
 	def ping_device(self):
 		IP =''
 		try:
