@@ -23,9 +23,7 @@ def report(ips):
 	print(79 * "-")
 
 	for ip in sorted(ips):
-		if ips[ip].get("hostname", "") == 'raspberrypi':
-				print(ip)
-				exit()
+
 		if (datetime.now() - ips[ip]["datetime"]).seconds < 150:
 			print(ips[ip]["datetime"].strftime("%Y-%m-%d %H:%M:%S"), end=": ")
 			print(ip, end=", ")
