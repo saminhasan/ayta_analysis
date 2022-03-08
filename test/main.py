@@ -1,4 +1,5 @@
 import json
+import time
 import socket
 import requests
 from demo import*
@@ -10,6 +11,7 @@ import tkinter as tk
 class Application(tk.Frame):
 	def __init__(self, master=None):
 		self.DEVICE_IP = self.find_device()
+		print(f' Device IP  = {self.DEVICE_IP}')
 
 		super().__init__(master)
 		self.master = master
@@ -24,7 +26,7 @@ class Application(tk.Frame):
 		while True:
 			try:
 				IP = socket.gethostbyname('raspberrypi.local')
-				print(f' Device IP  = {IP}')
+				time.sleep(1)
 				if IP:
 					break
 			except Exception as e:
@@ -33,6 +35,16 @@ class Application(tk.Frame):
 				#if 
 				print("Device Not Found")
 		return IP
+	def ping_device(self):
+		IP =''
+		try:
+				IP = socket.gethostbyname('raspberrypi.local')
+				return IP
+
+		except Exception as e:
+
+				print("Device Not Found")
+				return IP
 	def create_widgets(self):
 		self.start = tk.Button(self)
 		self.start["text"] = "Start"
@@ -48,8 +60,23 @@ class Application(tk.Frame):
 		self.inputtxt = tk.Text(self, height = 1, width = 24)
 		self.inputtxt.insert(tk.END, self.DEVICE_IP)
 		self.inputtxt.pack(fill = "both", expand = True, pady=5)
-
-
+		self.status =str(time.time())
+		self.status_label = tk.Label(self, text=self.status,bd=1, relief=tk.SUNKEN, anchor=tk.W, bg = 'red')
+		self.status_label.pack(side=tk.BOTTOM, fill=tk.X)
+		self.update_label()
+	
+	def update_label(self):
+		self.status = 'disconnected'
+		color = 'red'
+		IP = self.ping_device()
+		if IP:
+			self.status = 'connected'
+			color = 'green'
+		#self.status = str(time.time())
+		self.status_label.config(text=self.status,bg= color)
+		#self.status_label.pack(side=tk.BOTTOM, fill=tk.X)
+		self.status_label.after(1000, self.update_label)
+		
 	def started(self):
 		self.start.configure(bg="green")
 		self.stop.configure(bg="white")
@@ -73,13 +100,14 @@ class Application(tk.Frame):
 		stop_cmd = "http://"+ str(inp) +":5000/stop"
 		data = requests.get(stop_cmd)
 		print(data.status_code)
+		print(data.text)
 		data = json.loads(data.text)
 		df = pd.DataFrame(data)
 		df = df.fillna(0)
 		df = df.fillna(0)
 		#print(df.columns)
 		#print(df.head())
-		if self.recording and len(df) > 10:
+		if self.recording and len(df) > 2:
 			self.recording = False 
 			self.foo(df)
 
