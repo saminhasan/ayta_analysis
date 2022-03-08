@@ -1,15 +1,8 @@
-import os
-import navpy
-import time
 import json
-import gmplot
 import requests
+from demo import*
 import pandas as pd
 import tkinter as tk
-import matplotlib.pyplot as plt
-from datetime import datetime
-
-from demo import*
 
 
 class Application(tk.Frame):
@@ -19,6 +12,7 @@ class Application(tk.Frame):
 		self.master.geometry("320x240")
 		self.pack()
 		self.create_widgets()
+		self.recording = False
 
 	def create_widgets(self):
 		self.start = tk.Button(self)
@@ -40,6 +34,8 @@ class Application(tk.Frame):
 	def started(self):
 		self.start.configure(bg="green")
 		self.stop.configure(bg="white")
+		self.recording = True
+
 		print("Command Sent: start")
 		inp = self.inputtxt.get(1.0, "end-1c")
 		#print(inp)
@@ -61,22 +57,17 @@ class Application(tk.Frame):
 		data = json.loads(data.text)
 		df = pd.DataFrame(data)
 		#print(df.columns)
-		print(df.head())
-
-		self.foo(df)
+		#print(df.head())
+		if self.recording and len(df) > 10:
+			self.recording = False 
+			self.foo(df)
 
 	@staticmethod
 	def foo(df):
 
-		gmap = gmplot.GoogleMapPlotter(df['latitude'][0], df['longitude'][0], 20)
-		gmap.heatmap(df['latitude'], df['longitude'])
-		now = datetime.now()
-		dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
-		path = os.getcwd()
-		log_path = path #+ "\\Data\\"
-		gmap.draw(dt_string + ".html")
-		top_speed = df['velocity'].max()
 		show_data(df)
+		
+		
 def main():
 	try:
 		root = tk.Tk()

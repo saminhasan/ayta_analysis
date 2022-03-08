@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Google Maps - gmplot</title>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
+<script type="text/javascript">
+    function initialize() {
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            zoom: 20,
+            center: new google.maps.LatLng(23.826398, 90.348730)
+        });
+
+        new google.maps.visualization.HeatmapLayer({
+            threshold: 10,
+            radius: 10,
+            maxIntensity: 1,
+            opacity: 0.600000,
+            dissipating: true,
+            map: map,
+            data: [
+                new google.maps.LatLng(23.826398, 90.348730),
+                new google.maps.LatLng(23.826393, 90.348735),
+                new google.maps.LatLng(23.826382, 90.348737),
+                new google.maps.LatLng(23.826420, 90.348535),
+                new google.maps.LatLng(23.826451, 90.348380),
+                new google.maps.LatLng(23.826469, 90.348277),
+                new google.maps.LatLng(23.826482, 90.348193),
+                new google.maps.LatLng(23.826489, 90.348139),
+                new google.maps.LatLng(23.826497, 90.348091),
+                new google.maps.LatLng(23.826500, 90.348046),
+                new google.maps.LatLng(23.826503, 90.348019),
+                new google.maps.LatLng(23.826507, 90.348011),
+                new google.maps.LatLng(23.826514, 90.347989),
+                new google.maps.LatLng(23.826511, 90.347982),
+                new google.maps.LatLng(23.826507, 90.347973),
+                new google.maps.LatLng(23.826503, 90.347964),
+                new google.maps.LatLng(23.826501, 90.347968),
+                new google.maps.LatLng(23.826470, 90.348295),
+                new google.maps.LatLng(23.826480, 90.348302),
+                new google.maps.LatLng(23.826506, 90.348259),
+                new google.maps.LatLng(23.826527, 90.348227),
+                new google.maps.LatLng(23.826527, 90.348195),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(23.826520, 90.348175),
+                new google.maps.LatLng(23.826523, 90.348156),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(23.826344, 90.348325),
+                new google.maps.LatLng(23.826208, 90.348418),
+                new google.maps.LatLng(23.826158, 90.348512),
+                new google.maps.LatLng(23.826122, 90.348578),
+                new google.maps.LatLng(23.826115, 90.348648),
+                new google.maps.LatLng(23.826097, 90.348680),
+                new google.maps.LatLng(23.826144, 90.348647),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(23.826135, 90.348674),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(nan, nan),
+                new google.maps.LatLng(23.826145, 90.348681),
+                new google.maps.LatLng(23.826159, 90.348720),
+                new google.maps.LatLng(23.826080, 90.348751),
+                new google.maps.LatLng(23.826035, 90.348759),
+                new google.maps.LatLng(23.826010, 90.348775),
+                new google.maps.LatLng(23.825980, 90.348792),
+                new google.maps.LatLng(23.825955, 90.348801),
+                new google.maps.LatLng(23.825948, 90.348814),
+                new google.maps.LatLng(23.825934, 90.348822),
+                new google.maps.LatLng(23.825931, 90.348827),
+                new google.maps.LatLng(23.825888, 90.348803),
+                new google.maps.LatLng(23.825866, 90.348783),
+                new google.maps.LatLng(23.825872, 90.348782),
+            ]
+        });
+
+    }
+</script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+    <div id="map_canvas" style="width: 100%; height: 100%;" />
+</body>
+</html>
