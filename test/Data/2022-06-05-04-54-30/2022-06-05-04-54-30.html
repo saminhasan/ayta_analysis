@@ -8,7 +8,7 @@
     function initialize() {
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             zoom: 20,
-            center: new google.maps.LatLng(37.105792, 127.518386)
+            center: new google.maps.LatLng(0.000000, 0.000000)
         });
 
         new google.maps.visualization.HeatmapLayer({
@@ -19,9 +19,17 @@
             dissipating: true,
             map: map,
             data: [
-                new google.maps.LatLng(37.105792, 127.518386),
-                new google.maps.LatLng(37.105792, 127.518386),
-                new google.maps.LatLng(37.105792, 127.518386),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
+                new google.maps.LatLng(0.000000, 0.000000),
             ]
         });
 
